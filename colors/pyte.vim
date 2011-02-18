@@ -32,11 +32,11 @@ hi Underlined  guifg=#202020 gui=underline
 
 hi Cursor    guifg=black   guibg=#b0b4b8
 hi lCursor   guifg=black   guibg=white
-hi LineNr    guifg=#ffffff guibg=#c0d0e0
+hi LineNr   guifg=#202020 guibg=#c0d0e0 gui=NONE
 
 hi Normal    guifg=#404850   guibg=#f0f0f0
 
-hi StatusLine guifg=white guibg=#8090a0 gui=bold,italic
+hi StatusLine guifg=#202020 guibg=#8090a0 gui=NONE
 hi StatusLineNC guifg=#506070 guibg=#a0b0c0 gui=italic
 hi VertSplit guifg=#a0b0c0 guibg=#a0b0c0 gui=NONE
 
@@ -58,37 +58,35 @@ hi Statement  guifg=#007020 gui=bold
 
 
 " HTML: arguments
-hi Type       guifg=#e5a00d gui=italic
+hi Type       guifg=#e5a00d gui=NONE
 " Python: Standard exceptions, True&False
-hi Structure  guifg=#007020 gui=italic
-hi Function   guifg=#06287e gui=italic
+hi Structure  guifg=#007020 gui=NONE
+hi Function   guifg=#06287e gui=NONE
 
-hi Identifier guifg=#5b3674 gui=italic
+hi Identifier guifg=#5b3674 gui=NONE
 
-hi Repeat      guifg=#7fbf58 gui=bold
-hi Conditional guifg=#4c8f2f gui=bold
+hi Repeat      guifg=#7fbf58 gui=NONE
+hi Conditional guifg=#4c8f2f gui=NONE
 
 " Cheetah: #-Symbol, function-names
 hi PreProc    guifg=#1060a0 gui=NONE
 " Cheetah: def, for and so on, Python: Decorators
-hi Define      guifg=#1060a0 gui=bold
+hi Define      guifg=#1060a0 gui=NONE
 
-hi Error      guifg=red guibg=white gui=bold,underline
-hi Todo       guifg=#a0b0c0 guibg=NONE gui=italic,bold,underline
+hi Error      guifg=red guibg=white gui=NONE
+hi Todo       guifg=#a0b0c0 guibg=NONE gui=italic,bold
 
 " Python: %(...)s - constructs, encoding
-hi Special    guifg=#70a0d0 gui=italic
+hi Special    guifg=#70a0d0 gui=NONE
 
 hi Operator   guifg=#408010
 
 " color of <TAB>s etc...  
 "hi SpecialKey guifg=#d8a080 guibg=#e8e8e8 gui=italic  
-hi SpecialKey guifg=#d0b0b0 guibg=#f0f0f0 gui=none
+hi SpecialKey guifg=#d0b0b0 guibg=#f0f0f0 gui=NONE
 
 " Diff
-hi DiffChange guifg=NONE guibg=#e0e0e0 gui=italic,bold
-hi DiffText guifg=NONE guibg=#f0c8c8 gui=italic,bold
-hi DiffAdd guifg=NONE guibg=#c0e0d0 gui=italic,bold
-hi DiffDelete guifg=NONE guibg=#f0e0b0 gui=italic,bold
-
-
+hi DiffChange guifg=NONE guibg=#e0e0e0	gui=italic,bold
+hi DiffText guifg=NONE guibg=#f0c8c8		gui=italic,bold
+hi DiffAdd guifg=NONE guibg=#7fbf58			gui=italic,bold
+hi DiffDelete guifg=NONE guibg=#f0e0b0	gui=italic,bold

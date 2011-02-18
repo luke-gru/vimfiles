@@ -46,8 +46,8 @@ if has("gui_running")
   highlight PreProc guifg=#FF5600
 
   " StatusLine
-  highlight StatusLine  guifg=#000000 guibg=#ffffaf gui=NONE
-  highlight StatusLineNC  guifg=#000000 guibg=#ffffff gui=italic
+  highlight StatusLine  guifg=#000000 guibg=#CDC9C9		gui=NONE
+  highlight StatusLineNC  guifg=#000000 guibg=#8B8B83 gui=italic
 
 	"ModeMsg
 	highlight ModeMsg				gui=NONE
