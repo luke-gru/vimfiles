@@ -113,7 +113,8 @@ else
 endif
 hi LineNr       guifg=#666677           guibg=#cccfbf    gui=NONE
 hi MatchParen   guifg=black             guibg=LemonChiffon3     gui=bold
-hi ModeMsg      guifg=White             guibg=tomato1           gui=bold
+hi ModeMsg      guifg=black             guibg=#DD9475						gui=NONE
+"ModeMsg bg changed to copper
 hi MoreMsg      guifg=SeaGreen4         guibg=bg                gui=bold
 hi NonText      guifg=LightCyan3        guibg=bg                gui=bold
 
@@ -131,7 +132,7 @@ elseif exists('g:mayansmoke_special_key_visibility') && g:mayansmoke_special_key
 elseif exists('g:mayansmoke_special_key_visibility') && g:mayansmoke_special_key_visibility == 0
     hi SpecialKey   guifg=bisque3       guibg=NONE              gui=NONE
 else
-    hi SpecialKey   guifg=white         guibg=ivory3            gui=NONE
+    hi SpecialKey   guifg=black         guibg=NONE            gui=NONE
 endif
 hi SpellBad     guisp=Firebrick2                                gui=undercurl
 hi SpellCap     guisp=Blue                                      gui=undercurl
@@ -246,14 +247,14 @@ hi WildMenu     ctermfg=16              ctermbg=117             cterm=NONE
 "       Debug          debugging statements
 "   *Error          any erroneous construct
 "   *Todo           anything that needs extra attention
-" hi Comment      guifg=#A2B5CD         guibg=NONE      gui=italic
+"default: hi Comment      guifg=#A2B5CD         guibg=NONE      gui=italic
 hi Comment      guifg=#A2ADD0						guibg=NONE      gui=italic
-hi Constant     guifg=DarkOrange        guibg=NONE      gui=NONE
+hi Constant     guifg=#FF3300						guibg=NONE      gui=NONE
     hi String   guifg=Aquamarine4       guibg=NONE      gui=NONE
-    hi Boolean  guifg=#C46210						guibg=NONE      gui=NONE
 hi Identifier   guifg=brown3            guibg=NONE      gui=NONE
 hi Function     guifg=VioletRed4        guibg=NONE      gui=NONE
 hi Statement    guifg=blue1             guibg=NONE      gui=NONE
+		hi Exception guifg=VioletRed4				guibg=NONE			gui=NONE
 hi Keyword      guifg=DodgerBlue        guibg=NONE      gui=NONE
 hi PreProc      guifg=blue1             guibg=NONE      gui=NONE
 hi Type         guifg=LightSlateBlue    guibg=NONE      gui=NONE
