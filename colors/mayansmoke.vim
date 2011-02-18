@@ -91,7 +91,7 @@ hi DiffText     guifg=black             guibg=LightCyan1        gui=NONE
 hi Directory    guifg=#1600FF           guibg=bg                gui=NONE
 hi ErrorMsg     guifg=Red2              guibg=NONE              gui=NONE
 hi FoldColumn   guifg=SteelBlue4        guibg=LightYellow2      gui=bold
-hi Folded       guifg=SteelBlue4        guibg=Gainsboro      gui=italic
+hi Folded       guifg=SteelBlue4        guibg=Gainsboro					gui=italic
 if hlexists('MayanSmokeSearch')
     hi link IncSearch MayanSmokeSearch
     hi link Search MayanSmokeSearch
@@ -144,8 +144,8 @@ hi TabLine      guifg=fg                guibg=LightGrey         gui=underline
 hi TabLineFill  guifg=fg                guibg=bg                gui=reverse
 hi TabLineSel   guifg=fg                guibg=bg                gui=bold
 hi Title        guifg=DeepSkyBlue3      guibg=bg                gui=bold
-hi VertSplit    guifg=#99aabb     guibg=#99aabb
-hi Visual       guifg=white             guibg=DeepSkyBlue1      gui=NONE
+hi VertSplit    guifg=#99aabb						guibg=#99aabb
+hi Visual       guifg=white             guibg=#3BB08F      gui=NONE
 hi WarningMsg   guifg=Firebrick2        guibg=bg                gui=NONE
 hi WildMenu     guifg=Black             guibg=SkyBlue           gui=NONE
 " }}}
@@ -247,10 +247,10 @@ hi WildMenu     ctermfg=16              ctermbg=117             cterm=NONE
 "   *Error          any erroneous construct
 "   *Todo           anything that needs extra attention
 " hi Comment      guifg=#A2B5CD         guibg=NONE      gui=italic
-hi Comment      guifg=#96AAC2         guibg=NONE      gui=italic
+hi Comment      guifg=#A2ADD0						guibg=NONE      gui=italic
 hi Constant     guifg=DarkOrange        guibg=NONE      gui=NONE
     hi String   guifg=Aquamarine4       guibg=NONE      gui=NONE
-    hi Boolean  guifg=IndianRed4        guibg=NONE      gui=NONE
+    hi Boolean  guifg=#C46210						guibg=NONE      gui=NONE
 hi Identifier   guifg=brown3            guibg=NONE      gui=NONE
 hi Function     guifg=VioletRed4        guibg=NONE      gui=NONE
 hi Statement    guifg=blue1             guibg=NONE      gui=NONE
