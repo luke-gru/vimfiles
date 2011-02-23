@@ -1,9 +1,8 @@
-" =============================================================================
 "
 " File:        mayansmoke.vim
 " Description: Vim color scheme file
 " Maintainer:  Jeet Sukumaran (GUI colors); Clayton Parker (cterm colors)
-"
+" changes by Luke Gruber
 " =============================================================================
 
 "  Initialization and Setup {{{1
@@ -19,6 +18,7 @@ let colors_name = "mayansmoke"
 "  Normal Color {{{1
 " =============================================================================
 hi Normal gui=NONE guifg=Black guibg=#F4F4E8
+"bg = f4f4E8
 " }}}
 
 "  Highlight Groups {{{1
@@ -86,7 +86,6 @@ hi CursorIM     guifg=bg                guibg=fg                gui=NONE
 hi lCursor      guifg=bg                guibg=fg                gui=NONE
 hi DiffAdd      guifg=NONE              guibg=SeaGreen1         gui=NONE
 hi DiffChange   guifg=NONE              guibg=LightSkyBlue1     gui=NONE
-hi DiffDelete   guifg=NONE              guibg=LightCoral        gui=NONE
 hi DiffText     guifg=black             guibg=LightCyan1        gui=NONE
 hi Directory    guifg=#1600FF           guibg=bg                gui=NONE
 hi ErrorMsg     guifg=Red2              guibg=NONE              gui=NONE
@@ -114,7 +113,6 @@ endif
 hi LineNr       guifg=#666677           guibg=#cccfbf    gui=NONE
 hi MatchParen   guifg=black             guibg=LemonChiffon3     gui=bold
 hi ModeMsg      guifg=black             guibg=#DD9475						gui=NONE
-"ModeMsg bg changed to copper
 hi MoreMsg      guifg=SeaGreen4         guibg=bg                gui=bold
 hi NonText      guifg=LightCyan3        guibg=bg                gui=bold
 
@@ -146,7 +144,7 @@ hi TabLineFill  guifg=fg                guibg=bg                gui=reverse
 hi TabLineSel   guifg=fg                guibg=bg                gui=bold
 hi Title        guifg=DeepSkyBlue3      guibg=bg                gui=bold
 hi VertSplit    guifg=#99aabb						guibg=#99aabb
-hi Visual       guifg=white             guibg=#3BB08F      gui=NONE
+hi Visual       guifg=fg								guibg=#61D28F						gui=NONE
 hi WarningMsg   guifg=Firebrick2        guibg=bg                gui=NONE
 hi WildMenu     guifg=Black             guibg=SkyBlue           gui=NONE
 " }}}
@@ -248,25 +246,25 @@ hi WildMenu     ctermfg=16              ctermbg=117             cterm=NONE
 "   *Error          any erroneous construct
 "   *Todo           anything that needs extra attention
 "default: hi Comment      guifg=#A2B5CD         guibg=NONE      gui=italic
-hi Comment      guifg=#A2ADD0						guibg=NONE      gui=italic
-hi Constant     guifg=#FF3300						guibg=NONE      gui=NONE
-    hi String   guifg=Aquamarine4       guibg=NONE      gui=NONE
+hi Comment      guifg=LightSlateBlue						guibg=NONE      gui=italic
+hi Constant     guifg=#DD0000						guibg=NONE      gui=NONE
+    hi String   guifg=#006666       guibg=NONE      gui=NONE
 hi Identifier   guifg=brown3            guibg=NONE      gui=NONE
-hi Function     guifg=VioletRed4        guibg=NONE      gui=NONE
+hi Function     guifg=chocolate4        guibg=NONE      gui=NONE
 hi Statement    guifg=blue1             guibg=NONE      gui=NONE
 		hi Exception guifg=VioletRed4				guibg=NONE			gui=NONE
 hi Keyword      guifg=DodgerBlue        guibg=NONE      gui=NONE
 hi PreProc      guifg=blue1             guibg=NONE      gui=NONE
-hi Type         guifg=LightSlateBlue    guibg=NONE      gui=NONE
-hi Special      guifg=DarkOliveGreen4   guibg=NONE      gui=NONE
+hi Type         guifg=#4B0082    guibg=NONE      gui=bold
+hi Special      guifg=#556B2F   guibg=NONE      gui=NONE
 hi Ignore       guifg=bg                guibg=NONE      gui=NONE
 hi Error        guifg=Red               guibg=NONE      gui=underline
-hi Todo         guifg=tan4              guibg=NONE      gui=underline
+hi Todo         guifg=chocolate4              guibg=NONE      gui=underline
 " 2}}}
 
 "  Vim {{{2
 " -----------------------------------------------------------------------------
-hi VimError         guifg=red            guibg=Black   gui=bold
+hi VimError         guifg=red            guibg=bg   gui=NONE
 hi VimCommentTitle  guifg=DarkSlateGray4 guibg=bg      gui=bold,italic
 " 2}}}
 
@@ -277,7 +275,7 @@ hi VimCommentTitle  guifg=DarkSlateGray4 guibg=bg      gui=bold,italic
 " syn match qfSeparator "|" nextgroup=qfLineNr contained
 " syn match qfLineNr    "[^|]*" contained contains=qfError
 " syn match qfError     "error" contained
-hi qfFileName  guifg=LightSkyBlue4     guibg=NONE      gui=italic
+hi qfFileName  guifg=LightSkyBlue4     guibg=NONE      gui=NONE
 hi qfLineNr    guifg=coral             guibg=NONE      gui=bold
 hi qfError     guifg=red               guibg=NONE      gui=bold
 " 2}}}

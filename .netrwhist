@@ -1,2 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/luke'
+let g:netrw_dirhist_2='/home/luke/.autotest_images'
+let g:netrw_dirhist_3='/home/luke'
+let g:netrw_dirhist_4='/home/luke/.dropbox'
+let g:netrw_dirhist_5='/home/luke'
+let g:netrw_dirhist_6='/home/luke/.gem'
+let g:netrw_dirhist_7='/home/luke'
