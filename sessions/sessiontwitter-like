@@ -53,7 +53,6 @@ badd +1 app/helpers/sessions_helper.rb
 badd +1 config/initializers/session_store.rb
 badd +69 spec/requests/layout_links_spec.rb
 args .autotest
-winpos 0 24
 edit app/views/layouts/_header.html.erb
 set splitbelow splitright
 wincmd t
@@ -68,12 +67,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 11 - ((10 * winheight(0) + 17) / 34)
+let s:l = 2 - ((1 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-11
-normal! 0
+2
+normal! 02l
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

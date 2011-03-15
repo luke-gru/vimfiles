@@ -27,29 +27,29 @@ twitter-like=/home/luke/rails_projects/twitter-like CD=. filter=""*.rb *.html.er
   }
   views=views {
    layouts=layouts {
-		application.html.erb
-		_stylesheets.html.erb
-		_header.html.erb
-		_footer.html.erb
+    application.html.erb
+    _stylesheets.html.erb
+    _header.html.erb
+    _footer.html.erb
    }
    pages=pages {
     about.html.erb
     contact.html.erb
     home.html.erb
-		help.html.erb
+    help.html.erb
    }
-	 users=users {
+   users=users {
     new.html.erb
-		show.html.erb
-		edit.html.erb
-		index.html.erb
-	}
-	sessions=sessions {
+    show.html.erb
+    edit.html.erb
+    index.html.erb
+  }
+  sessions=sessions {
     new.html.erb
-	}
-	shared=shared {
+  }
+  shared=shared {
     _error_messages.html.erb
-	}
+  }
   }
  }
  config=config {
@@ -79,19 +79,19 @@ twitter-like=/home/luke/rails_projects/twitter-like CD=. filter=""*.rb *.html.er
   schema.rb
   seeds.rb
   test.sqlite3
-	migrate=migrate {
+  migrate=migrate {
    20110206001304_create_users.rb
    20110206022006_add_email_uniqueness_index.rb
    20110206203259_add_password_to_users.rb
    20110206214822_add_salt_to_users.rb
-	}
+  }
  }
  doc=doc {
   README_FOR_APP
  }
  lib=lib {
   tasks=tasks {
-	 sample_data.rake
+   sample_data.rake
   }
  }
  log=log {
@@ -120,11 +120,11 @@ twitter-like=/home/luke/rails_projects/twitter-like CD=. filter=""*.rb *.html.er
   }
   stylesheets=stylesheets {
    custom.css
-	 blueprint=blueprint {
+   blueprint=blueprint {
     ie.css
     print.css
     screen.css
-	 }
+   }
   }
  }
  script=script {
@@ -132,21 +132,21 @@ twitter-like=/home/luke/rails_projects/twitter-like CD=. filter=""*.rb *.html.er
  }
  spec=spec {
   spec_helper.rb
-	factories.rb
+  factories.rb
   controllers=controllers {
    pages_controller_spec.rb
    sessions_controller_spec.rb
    users_controller_spec.rb
   }
-	models=models {
+  models=models {
    user_spec.rb
-	}
-	requests=requests {
+  }
+  requests=requests {
    friendly_forwardings_spec.rb
    layout_links_spec.rb
    users_spec.rb
-	}
-}	
+  }
+} 
  tmp=tmp {
   cache=cache {
   }

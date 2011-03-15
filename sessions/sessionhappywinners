@@ -8,39 +8,92 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +164 ~/.vimrc
+badd +226 ~/.vimrc
 badd +23 Gemfile
 badd +17 tags
-badd +2 app/controllers/application_controller.rb
-badd +1 app/controllers/happy_winners_classes_controller.rb
-badd +18 app/models/happy_winners_class.rb
+badd +18 app/controllers/application_controller.rb
+badd +50 app/controllers/happy_winners_classes_controller.rb
+badd +15 app/models/happy_winners_class.rb
 badd +15 db/migrate/20110223214119_create_happy_winners_classes.rb
-badd +5 config/routes.rb
-badd +23 app/views/happy_winners_classes/_form.html.erb
-badd +1 app/views/happy_winners_classes/edit.html.erb
+badd +21 config/routes.rb
+badd +27 app/views/happy_winners_classes/_form.html.erb
+badd +5 app/views/happy_winners_classes/edit.html.erb
 badd +1 app/views/happy_winners_classes/index.html.erb
 badd +1 app/views/happy_winners_classes/new.html.erb
-badd +2 app/views/happy_winners_classes/show.html.erb
-badd +17 app/views/layouts/application.html.erb
+badd +1 app/views/happy_winners_classes/show.html.erb
+badd +33 app/views/layouts/application.html.erb
 badd +1 app/controllers/registrations_controller.rb
-badd +15 app/views/registrations/index.html.erb
+badd +1 app/views/registrations/index.html.erb
 badd +7 db/migrate/20110223225819_add_description_to_happywinnersclass.rb
 badd +5 db/migrate/20110223225907_add_teacher_to_happywinnersclass.rb
 badd +14 app/views/layouts/happy_winners_classes.html.erb
-badd +10 app/views/layouts/_stylesheets.html.erb
-badd +75 public/stylesheets/classes.css
-badd +1 app/views/layouts/_header.html.erb
+badd +1 app/views/layouts/_stylesheets.html.erb
+badd +271 public/stylesheets/classes.css
+badd +20 app/views/layouts/_header.html.erb
 badd +2 doc/README_FOR_APP
-badd +26 public/stylesheets/scaffold.css
-badd +16 public/stylesheets/custom.css
+badd +22 public/stylesheets/scaffold.css
+badd +1 public/stylesheets/custom.css
 badd +8 config/initializers/session_store.rb
-badd +11 app/models/cart.rb
-badd +19 app/models/cart_item.rb
-badd +11 app/models/line_item.rb
-badd +9 db/migrate/20110225043533_create_line_items.rb
-badd +13 app/models/client.rb
+badd +38 app/models/cart.rb
+badd +12 app/models/cart_item.rb
+badd +4 app/models/line_item.rb
+badd +1 db/migrate/20110225043533_create_line_items.rb
+badd +5 app/helpers/registrations_helper.rb
+badd +21 app/views/registrations/_cart.html.erb
+badd +14 app/views/registrations/_cart_item.html.erb
+badd +10 app/views/registrations/add_to_cart.js.rjs
+badd +1 app/views/registrations/empty_cart.js.rjs
+badd +1 app/helpers/happy_winners_classes_helper.rb
+badd +5 app/views/registrations/checkout.html.erb
+badd +1 db/migrate/20110226015334_add_password_to_client.rb
+badd +10 db/migrate/20110226023212_change_class_to_class_id.rb
+badd +1 db/migrate/20110226024044_drop_table_carts.rb
+badd +15 db/migrate/20110226024539_add_and_change_columns_to_line_items.rb
+badd +3 db/migrate/20110226025948_change_class_price_to_decimal.rb
+badd +10 app/helpers/application_helper.rb
+badd +1 app/controllers/line_items_controller.rb
+badd +1 app/views/registrations/remove_from_cart.js.rjs
+badd +18 app/controllers/admin_controller.rb
+badd +28 app/models/adminuser.rb
+badd +9 db/migrate/20110226203842_create_adminusers.rb
+badd +96 app/controllers/adminusers_controller.rb
+badd +3 app/views/admin/index.html.erb
+badd +1 app/views/admin/login.html.erb
+badd +2 app/views/admin/logout.html.erb
+badd +8 app/views/adminusers/index.html.erb
+badd +1 app/views/adminusers/edit.html.erb
+badd +26 app/views/adminusers/_form.html.erb
+badd +1 app/views/adminusers/new.html.erb
+badd +7 app/views/adminusers/show.html.erb
+badd +11 app/models/client.rb
+badd +1 app/controllers/clients_controller.rb
+badd +1 app/views/clients/login.html.erb
+badd +1 app/views/clients/login_client.html.erb
+badd +1 app/views/clients/logout_client.html.erb
+badd +1 config/environment.rb
+badd +1 app/views/clients/logout.html.erb
+badd +1 app/controllers/sessions_controller.rb
+badd +20 app/views/sessions/login.html.erb
+badd +1 app/views/sessions/logout.html.erb
+badd +10 db/migrate/20110306154348_drop_sessions_table.rb
+badd +1 config/initializers/mime_types.rb
+badd +1 config/initializers/inflections.rb
+badd +1 config/initializers/backtrace_silencers.rb
+badd +16 app/views/sessions/index.html.erb
+badd +5 db/migrate/20110312215200_add_constraints_to_line_items.rb
+badd +1 db/migrate/20110225044942_create_clients.rb
+badd +9 db/migrate/20110312221947_remove_column_class_id_in_line_items.rb
+badd +9 db/migrate/20110312222524_add_happywinnersclassid_back_to_line_items.rb
+badd +7 db/migrate/20110313013704_add_teacher_email_to_classes.rb
+badd +6 db/migrate/20110313014338_change_last_screwup.rb
+badd +9 db/migrate/20110313014503_add_teacher_email_to_happywinnersclasses.rb
+badd +1 app/views/sessions/settings.html.erb
+badd +9 db/migrate/20110313022432_add_paid_boolean_to_line_items.rb
+badd +3 app/controllers/info_controller.rb
+badd +1 app/views/info/unpaid_registrations.html.erb\ \ \ 
+badd +1 app/views/info/unpaid.html.erb
 silent! argdel *
-edit config/initializers/session_store.rb
+edit app/views/layouts/_header.html.erb
 set splitbelow splitright
 wincmd t
 set winheight=1 winwidth=1
@@ -54,12 +107,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 8 - ((7 * winheight(0) + 17) / 34)
+let s:l = 22 - ((21 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-8
-normal! 0
+22
+normal! 035l
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

@@ -1,4 +1,3 @@
-
 depot2=/home/luke/rails_projects/depot2 CD=. filter=""*.rb *.html.erb *js.rjs"" {
  Gemfile
  Gemfile.lock

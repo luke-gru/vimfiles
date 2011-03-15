@@ -70,7 +70,6 @@ snoremap <Right> a
 snoremap <BS> b<BS>
 snoremap <silent> <S-Tab> i<Right>=BackwardsSnippet()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
-nmap <silent> <F12> <Plug>ToggleProject
 nnoremap <F11> :set virtualedit=all
 nnoremap <F9> :set virtualedit=
 noremap <F3> :e ~/.vimrc
@@ -78,6 +77,7 @@ nnoremap <silent> <M-Right> :execute 'silent! tabmove ' . tabpagenr()
 nnoremap <silent> <M-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)
 nnoremap <C-Right> :tabnext
 nnoremap <C-Left> :tabprevious
+nmap <silent> <F12> <Plug>ToggleProject
 map <S-Insert> <MiddleMouse>
 imap S <Plug>ISurround
 imap s <Plug>Isurround
@@ -92,12 +92,12 @@ imap  <Plug>Isurround
 cnoremap  source ~/.vim/session
 cnoremap  call LoadFileTemplate(
 imap <silent>  =LookUpwards()
-abbr vpo validates_presence_of
-abbr vuo validates_uniqueness_of
-abbr vno validates_numericality_of
-abbr vfo validates_format_of
-abbr vlo validates_length_of
 abbr vco validates_confirmation_of
+abbr vlo validates_length_of
+abbr vfo validates_format_of
+abbr vno validates_numericality_of
+abbr vuo validates_uniqueness_of
+abbr vpo validates_presence_of
 cabbr mks mks! ~/.vim/session
 abbr proj 0r ~/.projects/railsdepot
 iabbr mymail luke<DOT>gru<AT>gmail<DOT>com
@@ -114,6 +114,7 @@ abbr ie initialize
 let &cpo=s:cpo_save
 unlet s:cpo_save
 set autoindent
+set autoread
 set background=dark
 set backspace=2
 set cmdheight=3
@@ -175,9 +176,27 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +1 app/controllers/admin_controller.rb
+badd +6 db/migrate/20110124233346_create_line_items.rb
+badd +1 db/migrate/20110118165007_create_products.rb
+badd +1 db/migrate/20110118171343_add_price_to_product.rb
+badd +1 db/migrate/20110118183429_add_test_data.rb
+badd +1 db/migrate/20110119161109_add_sessions_table.rb
+badd +1 db/migrate/20110124232546_create_orders.rb
+badd +1 db/migrate/20110126012231_create_users.rb
+badd +1 app/models/cart.rb
+badd +3 app/models/line_item.rb
+badd +7 app/models/order.rb
+badd +21 app/models/product.rb
+badd +1 app/controllers/info_controller.rb
+badd +1 app/views/info/who_bought.html.erb
+badd +5 app/views/info/who_bought.xml.builder
+badd +1 app/views/info/who_bought.atom.builder
+badd +10 app/views/store/add_to_cart.js.rjs
+badd +1 app/views/store/checkout.html.erb
+badd +1 app/views/store/empty_cart.js.rjs
 silent! argdel *
 winpos 0 24
-edit app/controllers/admin_controller.rb
+edit app/views/store/add_to_cart.js.rjs
 set splitbelow splitright
 wincmd t
 set winheight=1 winwidth=1
@@ -202,7 +221,7 @@ setlocal completefunc=
 setlocal nocopyindent
 setlocal nocursorcolumn
 setlocal nocursorline
-setlocal define=
+setlocal define=^\\s*#\\s*define
 setlocal dictionary=
 setlocal nodiff
 setlocal equalprg=
@@ -275,16 +294,17 @@ setlocal tags=tags;,~/rails_projects/depot2/.git/ruby.tags,~/rails_projects/depo
 setlocal textwidth=0
 setlocal thesaurus=
 setlocal nowinfixheight
+set winfixwidth
 setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 17) / 34)
+let s:l = 10 - ((9 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+10
 normal! 0
 tabnext 1
 if exists('s:wipebuf')
