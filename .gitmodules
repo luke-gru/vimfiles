@@ -25,3 +25,6 @@
 [submodule "bundle/w3cvalidate"]
 	path = bundle/w3cvalidate
 	url = git://github.com/dekomote/w3cvalidate.vim.git
+[submodule "bundle/zencoding"]
+	path = bundle/zencoding
+	url = https://github.com/mattn/zencoding-vim.git
