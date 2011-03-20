@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/luke/rails_projects/happywinners/db'
+let g:netrw_dirhist_2='/home/luke/rails_projects/happywinners/db/migrate'
+let g:netrw_dirhist_3='/home/luke/rails_projects/happywinners'
+let g:netrw_dirhist_4='/home/luke/rails_projects/volunteer/db/migrate'
