@@ -1,0 +1,182 @@
+happywinners=/home/luke/rails_projects/happywinners CD=. filter=""*.rb, *.html.erb, *.js.rjs" {
+Gemfile
+Gemfile.lock
+README
+Rakefile
+config.ru
+tags
+. # pragma keep
+app=app {
+ controllers=controllers {
+   admin_controller.rb
+   adminusers_controller.rb
+   application_controller.rb
+   happy_winners_classes_controller.rb
+   info_controller.rb
+   registrations_controller.rb
+   sessions_controller.rb
+ }
+ helpers=helpers {
+  application_helper.rb
+   happy_winners_classes_helper.rb
+   registrations_helper.rb
+ }
+ mailers=mailers {
+ }
+ models=models {
+  adminuser.rb
+   cart.rb
+   cart_item.rb
+   client.rb
+   happy_winners_class.rb
+   line_item.rb
+ }
+ views=views {
+  happy_winners_classes=happy_winners_classes {
+   _form.html.erb
+    edit.html.erb
+    index.html.erb
+    new.html.erb
+    show.html.erb
+  }
+  registrations=registrations {
+   index.html.erb
+    _cart.html.erb
+    _cart_item.html.erb
+    empty_cart.js.rjs
+    add_to_cart.js.rjs
+    remove_from_cart.js.rjs
+    checkout.html.erb
+  }
+  admin=admin {
+   index.html.erb
+    login.html.erb
+    logout.html.erb
+  }
+  adminusers=adminusers {
+   _form.html.erb
+    edit.html.erb
+    index.html.erb
+    new.html.erb
+    show.html.erb
+  }
+ info=info {
+  unpaid.html.erb
+  pay_form.html.erb
+  }
+  sessions=sessions {
+   login.html.erb
+   logout.html.erb
+   index.html.erb
+   settings.html.erb
+
+  }
+  layouts=layouts {
+    _header.html.erb
+    _stylesheets.html.erb
+    application.html.erb
+  }
+ }
+}
+config=config {
+ application.rb
+  boot.rb
+  database.yml
+  environment.rb
+  routes.rb
+  environments=environments {
+   development.rb
+    production.rb
+    test.rb
+  }
+ initializers=initializers {
+  backtrace_silencers.rb
+   inflections.rb
+   mime_types.rb
+   secret_token.rb
+   session_store.rb
+ }
+ locales=locales {
+  en.yml
+ }
+}
+db=db {
+  development.sqlite3
+  schema.rb
+  seeds.rb
+  test.sqlite3
+ migrate=migrate {
+   20110223214119_create_happy_winners_classes.rb
+   20110223225819_add_description_to_happywinnersclass.rb
+   20110223225907_add_teacher_to_happywinnersclass.rb
+   20110225043533_create_line_items.rb
+   20110225044942_create_clients.rb
+   20110226015334_add_password_to_client.rb
+   20110226023212_change_class_to_class_id.rb
+   20110226024539_add_and_change_columns_to_line_items.rb
+   20110226025948_change_class_price_to_decimal.rb
+   20110226203842_create_adminusers.rb
+   20110306154727_add_sessions_table.rb
+   20110312215200_add_constraints_to_line_items.rb
+   20110312221947_remove_column_class_id_in_line_items.rb
+   20110312222524_add_happywinnersclassid_back_to_line_items.rb
+   20110313014503_add_teacher_email_to_happywinnersclasses.rb
+   20110313022432_add_paid_boolean_to_line_items.rb
+   20110314000722_change_paid_for_in_line_items.rb
+ }
+}
+doc=doc {
+ README_FOR_APP
+}
+lib=lib {
+ tasks=tasks {
+ }
+}
+log=log {
+ development.log
+  production.log
+  server.log
+  test.log
+}
+public=public {
+ 404.html
+  422.html
+  500.html
+  favicon.ico
+  index.html
+  robots.txt
+  images=images {
+   rails.png
+  }
+ javascripts=javascripts {
+  application.js
+   controls.js
+   dragdrop.js
+   effects.js
+   prototype.js
+   rails.js
+ }
+ stylesheets=stylesheets {
+  classes.css
+   custom.css
+   scaffold.css
+ }
+}
+script=script {
+ rails
+}
+tmp=tmp {
+ cache=cache {
+ }
+ pids=pids {
+ }
+ sessions=sessions {
+ }
+ sockets=sockets {
+ }
+}
+vendor=vendor {
+ plugins=plugins {
+ }
+}
+}
