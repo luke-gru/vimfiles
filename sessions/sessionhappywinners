@@ -8,20 +8,20 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +226 ~/.vimrc
+badd +395 ~/.vimrc
 badd +23 Gemfile
 badd +17 tags
-badd +18 app/controllers/application_controller.rb
-badd +50 app/controllers/happy_winners_classes_controller.rb
-badd +14 app/models/happy_winners_class.rb
-badd +15 db/migrate/20110223214119_create_happy_winners_classes.rb
-badd +21 config/routes.rb
-badd +27 app/views/happy_winners_classes/_form.html.erb
-badd +5 app/views/happy_winners_classes/edit.html.erb
+badd +8 app/controllers/application_controller.rb
+badd +54 app/controllers/happy_winners_classes_controller.rb
+badd +15 app/models/happy_winners_class.rb
+badd +1 db/migrate/20110223214119_create_happy_winners_classes.rb
+badd +8 config/routes.rb
+badd +1 app/views/happy_winners_classes/_form.html.erb
+badd +1 app/views/happy_winners_classes/edit.html.erb
 badd +1 app/views/happy_winners_classes/index.html.erb
 badd +1 app/views/happy_winners_classes/new.html.erb
 badd +1 app/views/happy_winners_classes/show.html.erb
-badd +33 app/views/layouts/application.html.erb
+badd +10 app/views/layouts/application.html.erb
 badd +1 app/controllers/registrations_controller.rb
 badd +1 app/views/registrations/index.html.erb
 badd +7 db/migrate/20110223225819_add_description_to_happywinnersclass.rb
@@ -29,16 +29,16 @@ badd +5 db/migrate/20110223225907_add_teacher_to_happywinnersclass.rb
 badd +14 app/views/layouts/happy_winners_classes.html.erb
 badd +1 app/views/layouts/_stylesheets.html.erb
 badd +271 public/stylesheets/classes.css
-badd +1 app/views/layouts/_header.html.erb
+badd +10 app/views/layouts/_header.html.erb
 badd +2 doc/README_FOR_APP
 badd +22 public/stylesheets/scaffold.css
 badd +1 public/stylesheets/custom.css
 badd +8 config/initializers/session_store.rb
 badd +2 app/models/cart.rb
 badd +28 app/models/cart_item.rb
-badd +12 app/models/line_item.rb
+badd +5 app/models/line_item.rb
 badd +1 db/migrate/20110225043533_create_line_items.rb
-badd +5 app/helpers/registrations_helper.rb
+badd +1 app/helpers/registrations_helper.rb
 badd +21 app/views/registrations/_cart.html.erb
 badd +14 app/views/registrations/_cart_item.html.erb
 badd +10 app/views/registrations/add_to_cart.js.rjs
@@ -46,33 +46,33 @@ badd +1 app/views/registrations/empty_cart.js.rjs
 badd +1 app/helpers/happy_winners_classes_helper.rb
 badd +5 app/views/registrations/checkout.html.erb
 badd +1 db/migrate/20110226015334_add_password_to_client.rb
-badd +10 db/migrate/20110226023212_change_class_to_class_id.rb
+badd +1 db/migrate/20110226023212_change_class_to_class_id.rb
 badd +1 db/migrate/20110226024044_drop_table_carts.rb
-badd +15 db/migrate/20110226024539_add_and_change_columns_to_line_items.rb
+badd +1 db/migrate/20110226024539_add_and_change_columns_to_line_items.rb
 badd +3 db/migrate/20110226025948_change_class_price_to_decimal.rb
-badd +10 app/helpers/application_helper.rb
+badd +13 app/helpers/application_helper.rb
 badd +1 app/controllers/line_items_controller.rb
 badd +1 app/views/registrations/remove_from_cart.js.rjs
-badd +18 app/controllers/admin_controller.rb
-badd +1 app/models/adminuser.rb
+badd +2 app/controllers/admin_controller.rb
+badd +40 app/models/adminuser.rb
 badd +9 db/migrate/20110226203842_create_adminusers.rb
-badd +96 app/controllers/adminusers_controller.rb
+badd +48 app/controllers/adminusers_controller.rb
 badd +3 app/views/admin/index.html.erb
 badd +1 app/views/admin/login.html.erb
 badd +2 app/views/admin/logout.html.erb
 badd +8 app/views/adminusers/index.html.erb
 badd +1 app/views/adminusers/edit.html.erb
-badd +26 app/views/adminusers/_form.html.erb
+badd +1 app/views/adminusers/_form.html.erb
 badd +1 app/views/adminusers/new.html.erb
 badd +7 app/views/adminusers/show.html.erb
-badd +68 app/models/client.rb
+badd +18 app/models/client.rb
 badd +1 app/controllers/clients_controller.rb
 badd +1 app/views/clients/login.html.erb
 badd +1 app/views/clients/login_client.html.erb
 badd +1 app/views/clients/logout_client.html.erb
 badd +1 config/environment.rb
 badd +1 app/views/clients/logout.html.erb
-badd +1 app/controllers/sessions_controller.rb
+badd +24 app/controllers/sessions_controller.rb
 badd +20 app/views/sessions/login.html.erb
 badd +1 app/views/sessions/logout.html.erb
 badd +10 db/migrate/20110306154348_drop_sessions_table.rb
@@ -89,15 +89,58 @@ badd +6 db/migrate/20110313014338_change_last_screwup.rb
 badd +9 db/migrate/20110313014503_add_teacher_email_to_happywinnersclasses.rb
 badd +1 app/views/sessions/settings.html.erb
 badd +9 db/migrate/20110313022432_add_paid_boolean_to_line_items.rb
-badd +3 app/controllers/info_controller.rb
+badd +1 app/controllers/info_controller.rb
 badd +1 app/views/info/unpaid_registrations.html.erb\ \ \ 
 badd +1 app/views/info/unpaid.html.erb
-silent! argdel *
-edit app/models/line_item.rb
+badd +1 db/migrate/20110318001732_create_happy_winners_classes.rb
+badd +9 db/migrate/20110318005010_add_and_change_columns_to_line_items.rb
+badd +30 config/application.rb
+badd +14 db/migrate/20110423191839_add_test_and_dev_data.rb
+badd +1 config/database.yml
+badd +1 app/controllers/users_controller.rb
+badd +1 app/controllers/pages_controller.rb
+badd +13 app/controllers/settings_controller.rb
+badd +3 app/views/settings/index.html.erb
+badd +0 db/migrate/20110423212616_add_allow_class_view_to_settings:boolean.rb
+args db/migrate/20110318005010_add_and_change_columns_to_line_items.rb
+edit ~/.vim/projects/happywinners
 set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
 wincmd t
 set winheight=1 winwidth=1
+exe 'vert 1resize ' . ((&columns * 24 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 55 + 40) / 80)
 argglobal
+setlocal fdm=marker
+setlocal fde=0
+setlocal fmr={,}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+1
+normal zo
+109
+normal zo
+114
+normal zo
+109
+normal zo
+1
+normal zo
+let s:l = 133 - ((127 * winheight(0) + 17) / 34)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+133
+normal! 0
+wincmd w
+argglobal
+edit db/migrate/20110423212616_add_allow_class_view_to_settings:boolean.rb
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -107,18 +150,22 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 5 - ((4 * winheight(0) + 17) / 34)
+let s:l = 3 - ((2 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-5
-normal! 0
+3
+normal! 015l
+wincmd w
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 24 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 55 + 40) / 80)
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
-set winheight=1 winwidth=1 shortmess=filntToOmrwx
+set winheight=1 winwidth=1 shortmess=at
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if file_readable(s:sx)
   exe "source " . fnameescape(s:sx)

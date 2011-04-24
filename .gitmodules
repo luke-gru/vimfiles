@@ -15,7 +15,7 @@
 	url = https://github.com/tpope/vim-rails.git
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
-	url = https://github.com/msanders/snipmate.vim.git
+	url = https://github.com/luke-gru/mohel.git
 [submodule "bundle/surround"]
 	path = bundle/surround
 	url = https://github.com/tpope/vim-surround.git
@@ -25,3 +25,9 @@
 [submodule "bundle/w3cvalidate"]
 	path = bundle/w3cvalidate
 	url = git://github.com/dekomote/w3cvalidate.vim.git
+[submodule "bundle/javascript"]
+	path = bundle/javascript
+	url = git@github.com:pangloss/vim-javascript.git
+[submodule "bundle/ack"]
+	path = bundle/ack
+	url = git@github.com:mileszs/ack.vim.git
