@@ -40,3 +40,9 @@
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = git@github.com:scrooloose/syntastic.git
+[submodule "bundle/bufexplorer"]
+	path = bundle/bufexplorer
+	url = git@github.com:vim-scripts/bufexplorer.zip
+[submodule "bundle/indexed_search"]
+	path = bundle/indexed_search
+	url = git@github.com:vim-scripts/IndexedSearch.git

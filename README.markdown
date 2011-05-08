@@ -1,7 +1,7 @@
 #Setup:
 
 > 
-> cd ~ 
+>rm -rf .vim;  cd ~ 
 > 
 > git clone git@github.com:luke-gru/sickvim.git .vim
 > 
@@ -12,10 +12,10 @@ that the super is keeping track of.
 
 Done!
 
-#Pulling changes
+#Pulling submodule changes
 
 make sure your HEAD's not detached when pulling:
-> git checkout (-b) [branch]
+> git checkout -b tmp
 > 
 > git pull 
 > git add or commit -am "..."
