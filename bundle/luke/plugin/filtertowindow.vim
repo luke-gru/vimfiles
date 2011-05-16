@@ -1,5 +1,4 @@
 "make interactive"
-command! FW call FilterToScratch('myscript')
 
 function! FilterToScratch(script)
     let TempFile = tempname()
