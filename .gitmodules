@@ -16,6 +16,7 @@
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = https://github.com/luke-gru/mohel.git
+  ignore = dirty
 [submodule "bundle/surround"]
 	path = bundle/surround
 	url = https://github.com/tpope/vim-surround.git
@@ -37,6 +38,7 @@
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = git@github.com:scrooloose/syntastic.git
+  ignore = dirty
 [submodule "bundle/bufexplorer"]
 	path = bundle/bufexplorer
 	url = git@github.com:vim-scripts/bufexplorer.zip
