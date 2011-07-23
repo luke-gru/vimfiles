@@ -1,6 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/home/luke/Desktop/code'
-let g:netrw_dirhist_2='/home/luke/.rvm/gems/ruby-1.9.2-p180@rails3.0.3/gems/gist-2.0.4/lib/gist'
-let g:netrw_dirhist_3='/var/www/irina/category'
-let g:netrw_dirhist_4='/var/www/irina/index'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/luke/Desktop/code/hubeye/lib/notification'
+let g:netrw_dirhist_2='/home/luke/Desktop/code/hubeye'
+let g:netrw_dirhist_3='/home/luke/Desktop/code/js'

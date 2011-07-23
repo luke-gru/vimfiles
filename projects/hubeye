@@ -1,0 +1,31 @@
+hubeye=/home/luke/Desktop/code/hubeye CD=. filter=""*.rb Rakefile *.html"" {
+ README.md
+ Rakefile
+ ideas
+ tags
+ bin=bin {
+  hubeye
+  hubeye_client.rb
+ }
+ images=images {
+  change_icon.jpg
+ }
+ lib=lib {
+  environment.rb
+  log=log {
+   logger.rb
+  }
+  notification=notification {
+   gnomenotify.rb
+   growl.rb
+   notification.rb
+  }
+  server=server {
+   hubeye_server.rb
+  }
+ }
+ test=test {
+  notification.rb
+  test.rb
+ }
+}

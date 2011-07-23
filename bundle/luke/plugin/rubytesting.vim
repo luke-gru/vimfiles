@@ -9,6 +9,8 @@ if has('ruby')
         VIM::message("Buffers: #{bufcount}")
         sleep 2
         VIM.command('ls')
+      else
+        VIM::message("Buffers: #{bufcount}")
       end
     end
 EOF
