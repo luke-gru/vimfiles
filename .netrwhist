@@ -1,5 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/luke/Desktop/code/hubeye/lib/notification'
-let g:netrw_dirhist_2='/home/luke/Desktop/code/hubeye'
-let g:netrw_dirhist_3='/home/luke/Desktop/code/js'
+let g:netrw_dirhist_cnt =0
