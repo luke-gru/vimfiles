@@ -1,2 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/luke/Desktop/clones/myrails/actionpack/lib/action_pack'
+let g:netrw_dirhist_2='/home/luke/Desktop/clones/myrails/actionpack/lib'
+let g:netrw_dirhist_3='/home/luke/Desktop/clones/myrails/actionpack/lib/action_view'
+let g:netrw_dirhist_4='/home/luke/Desktop/clones/myrails/actionpack/lib/action_view/template'
+let g:netrw_dirhist_5='/home/luke/Desktop/clones/myrails/actionpack/lib/action_view'
