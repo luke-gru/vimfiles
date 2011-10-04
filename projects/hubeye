@@ -1,17 +1,30 @@
-hubeye=/home/luke/Desktop/code/hubeye CD=. filter=""*.rb Rakefile *.html"" {
+hubeye=/home/luke/Desktop/code/hubeye CD=. filter=""*"" {
+ LICENSE
  README.md
- Rakefile
+ VERSION.rb
+ hubeye.gemspec
  ideas
- tags
  bin=bin {
   hubeye
-  hubeye_client.rb
  }
  images=images {
   change_icon.jpg
  }
  lib=lib {
   environment.rb
+  client=client {
+   hubeye_client.rb
+  }
+  config=config {
+   parser.rb
+  }
+  helpers=helpers {
+   time.rb
+  }
+  hooks=hooks {
+   executer.rb
+   git_hooks.rb
+  }
   log=log {
    logger.rb
   }
@@ -24,8 +37,13 @@ hubeye=/home/luke/Desktop/code/hubeye CD=. filter=""*.rb Rakefile *.html"" {
    hubeye_server.rb
   }
  }
+ tasks=tasks {
+  install.rb
+ }
  test=test {
+  config_parser.rb
+  environment.rb
   notification.rb
-  test.rb
+  runner.rb
  }
 }
