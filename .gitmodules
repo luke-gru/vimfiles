@@ -1,12 +1,6 @@
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "bundle/specky"]
-	path = bundle/specky
-	url = https://github.com/vim-scripts/Specky.git
-[submodule "bundle/tabular"]
-	path = bundle/tabular
-	url = https://github.com/godlygeek/tabular.git
 [submodule "bundle/markdown"]
 	path = bundle/markdown
 	url = https://github.com/tpope/vim-markdown.git
@@ -20,9 +14,6 @@
 [submodule "bundle/surround"]
 	path = bundle/surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "bundle/gundo"]
-	path = bundle/gundo
-	url = git://github.com/sjl/gundo.vim.git
 [submodule "bundle/w3cvalidate"]
 	path = bundle/w3cvalidate
 	url = git://github.com/dekomote/w3cvalidate.vim.git
@@ -32,9 +23,6 @@
 [submodule "bundle/ack"]
 	path = bundle/ack
 	url = git@github.com:mileszs/ack.vim.git
-[submodule "bundle/gitv"]
-	path = bundle/gitv
-	url = git@github.com:gregsexton/gitv.git
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = git@github.com:scrooloose/syntastic.git
@@ -51,18 +39,12 @@
 [submodule "bundle/vim-preview"]
 	path = bundle/vim-preview
 	url = git@github.com:greyblake/vim-preview.git
-[submodule "bundle/zim"]
-	path = bundle/zim
-	url = git@github.com:vim-scripts/zim-syntax.git
 [submodule "bundle/unimpaired"]
 	path = bundle/unimpaired
 	url = git@github.com:tpope/vim-unimpaired.git
 [submodule "bundle/vim-rake"]
 	path = bundle/vim-rake
 	url = git@github.com:tpope/vim-rake.git
-[submodule "bundle/solarized"]
-	path = bundle/solarized
-	url = git@github.com:altercation/vim-colors-solarized.git
 [submodule "bundle/fuzzyfinder"]
 	path = bundle/fuzzyfinder
 	url = git@github.com:vim-scripts/FuzzyFinder.git

@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/luke/Desktop/code/ruby/studio54'
-let g:netrw_dirhist_2='/home/luke/Desktop/code/ruby/studio54/config'
-let g:netrw_dirhist_3='/home/luke/Desktop/code/ruby/studio54'
-let g:netrw_dirhist_4='/home/luke/Desktop/code/ruby/studio54/lib'
-let g:netrw_dirhist_5='/home/luke/Desktop/code/ruby/studio54'
-let g:netrw_dirhist_6='/home/luke/Desktop/code/ruby/studio54/config'
