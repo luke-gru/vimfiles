@@ -45,9 +45,6 @@
 [submodule "bundle/vim-rake"]
 	path = bundle/vim-rake
 	url = git@github.com:tpope/vim-rake.git
-[submodule "bundle/fuzzyfinder"]
-	path = bundle/fuzzyfinder
-	url = git@github.com:vim-scripts/FuzzyFinder.git
 [submodule "bundle/manpageview"]
 	path = bundle/manpageview
 	url = git@github.com:vim-scripts/ManPageView.git
