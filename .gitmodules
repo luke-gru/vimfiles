@@ -10,9 +10,6 @@
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = git@github.com/msanders/snipmate.git
-[submodule "bundle/surround"]
-	path = bundle/surround
-	url = git@github.com/tpope/vim-surround.git
 [submodule "bundle/w3cvalidate"]
 	path = bundle/w3cvalidate
 	url = git://github.com/dekomote/w3cvalidate.vim.git
@@ -52,3 +49,6 @@
 [submodule "bundle/pathogen"]
 	path = bundle/pathogen
 	url = git@github.com:tpope/vim-pathogen.git
+[submodule "bundle/surround"]
+	path = bundle/surround
+	url = git@github.com:tpope/vim-surround.git
