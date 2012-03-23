@@ -52,3 +52,6 @@
 [submodule "bundle/surround"]
 	path = bundle/surround
 	url = git@github.com:tpope/vim-surround.git
+[submodule "bundle/coffeescript"]
+	path = bundle/coffeescript
+	url = git@github.com:kchmck/vim-coffee-script.git
