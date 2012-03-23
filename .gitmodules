@@ -49,3 +49,6 @@
 [submodule "bundle/taglist"]
 	path = bundle/taglist
 	url = git@github.com:vim-scripts/taglist.vim
+[submodule "bundle/pathogen"]
+	path = bundle/pathogen
+	url = git@github.com:tpope/vim-pathogen.git
