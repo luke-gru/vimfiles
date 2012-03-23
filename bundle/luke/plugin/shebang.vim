@@ -2,28 +2,27 @@ if has("ruby")
 
   command! SB call She_Bang()
   function! She_Bang()
-    ruby << EOF
-    class Shebang
+    ruby << EEOOFF
+    class Buffer
 
       def initialize
         @buf = VIM::Buffer.current
         @firstline = @buf[1]
       end
 
-      def change_filetype
+      def parse_shebang
         if @firstline =~ /\A#!\/(usr)?\/bin\/(env)?(\s)?(.*)$/
-          @match = $4
-          VIM::set_option("ft=#{@match}")
-          VIM::set_option('ft?')
+          @ft = $4
+          VIM::set_option("ft=#{@ft}")
+          VIM::message("filetype: #{@ft}")
         else
           VIM::set_option('ft?')
           VIM::message("  filetype unchanged")
         end
       end
     end
-    buffer = Shebang.new
-    buffer.change_filetype
-EOF
+    buffer = Buffer.new
+    buffer.parse_shebang
+EEOOFF
   endfunction
-
 endif
