@@ -10,9 +10,6 @@
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = git@github.com/msanders/snipmate.git
-[submodule "bundle/w3cvalidate"]
-	path = bundle/w3cvalidate
-	url = git://github.com/dekomote/w3cvalidate.vim.git
 [submodule "bundle/javascript"]
 	path = bundle/javascript
 	url = git@github.com:pangloss/vim-javascript.git
@@ -55,3 +52,6 @@
 [submodule "bundle/coffeescript"]
 	path = bundle/coffeescript
 	url = git@github.com:kchmck/vim-coffee-script.git
+[submodule "bundle/vim-smartinput"]
+	path = bundle/vim-smartinput
+	url = git@github.com:kana/vim-smartinput.git

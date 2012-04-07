@@ -1,32 +1,13 @@
 #Setup:
 
-> 
->rm -rf .vim;  cd ~ 
-> 
-> git clone git@github.com:luke-gru/sickvim.git .vim
-> 
-> git submodule update --init 
+> rm -rf $HOME/.vim
 
-init the submodules and have them reference their latest commit
-that the super is keeping track of.
+> git clone git@github.com:luke-gru/sickvim.git $HOME/.vim
 
-Done!
+> cd .vim && git submodule update --init
 
-#Pulling submodule changes
+*Done!*
 
-make sure your HEAD's not detached when pulling:
-> git checkout -b tmp
-> 
-> git pull 
-> git add or commit -am "..."
-> git push 
+#Updating submodule'd plugins to their latest versions:
 
-to publish the new reference upstream
-
-> cd superproject
-> git add "." or "subproj dir."
-> git commit
-
-and push also, perhaps
-
-Done!
+> cd $HOME/.vim && submodule foreach git fetch origin --tags && git pull origin master && git submodule update --init --recursive
