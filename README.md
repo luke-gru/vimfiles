@@ -2,9 +2,9 @@
 
 > rm -rf $HOME/.vim
 
-> git clone git@github.com:luke-gru/sickvim.git $HOME/.vim
+> git clone git@github.com:luke-gru/vimfiles.git $HOME/.vim
 
-> cd .vim && git submodule update --init
+> cd $HOME/.vim && git submodule update --init
 
 *Done!*
 
