@@ -58,3 +58,6 @@
 [submodule "bundle/vim-handlebars"]
 	path = bundle/vim-handlebars
 	url = git@github.com:nono/vim-handlebars.git
+[submodule "bundle/vim-chroma"]
+	path = bundle/vim-chroma
+	url = git@github.com:luke-gru/vim-chroma.git

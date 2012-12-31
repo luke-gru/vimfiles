@@ -15,6 +15,4 @@ if has('ruby')
     end
 EOF
   endfunction
-else
-  echo "Buff_Bouncer: Your Vim wasn't compiled with Ruby :("
 endif

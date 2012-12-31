@@ -10,4 +10,4 @@
 
 #Updating submodule'd plugins to their latest versions:
 
-> cd $HOME/.vim && submodule foreach git fetch origin --tags && git pull origin master && git submodule update --init --recursive
+> cd $HOME/.vim && git submodule foreach git fetch origin --tags && git pull origin master && git submodule update --init --recursive
