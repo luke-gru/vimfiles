@@ -7,9 +7,6 @@
 [submodule "bundle/rails"]
 	path = bundle/rails
 	url = git@github.com/tpope/vim-rails.git
-[submodule "bundle/snipmate"]
-	path = bundle/snipmate
-	url = git@github.com/msanders/snipmate.git
 [submodule "bundle/javascript"]
 	path = bundle/javascript
 	url = git@github.com:pangloss/vim-javascript.git
@@ -25,15 +22,9 @@
 [submodule "bundle/haml-sass-scss"]
 	path = bundle/haml-sass-scss
 	url = git@github.com:tpope/vim-haml.git
-[submodule "bundle/vim-preview"]
-	path = bundle/vim-preview
-	url = git@github.com:greyblake/vim-preview.git
 [submodule "bundle/unimpaired"]
 	path = bundle/unimpaired
 	url = git@github.com:tpope/vim-unimpaired.git
-[submodule "bundle/vim-rake"]
-	path = bundle/vim-rake
-	url = git@github.com:tpope/vim-rake.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = git@github.com:scrooloose/nerdtree.git

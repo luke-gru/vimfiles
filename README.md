@@ -4,7 +4,7 @@
 
 > git clone git@github.com:luke-gru/vimfiles.git $HOME/.vim
 
-> cd $HOME/.vim && git submodule update --init
+> cd $HOME/.vim && git submodule update --init --recursive
 
 *Done!*
 
