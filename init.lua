@@ -80,9 +80,9 @@ vim.cmd('nnoremap <C-\\> "+p') -- clipboard paste normal mode
 vim.cmd('inoremap <C-\\> <ESC>"+p$') -- clipboard paste insert mode
 vim.cmd('vnoremap <C-y> "+y') -- clipboard yank visual mode
 vim.cmd('nnoremap Y y$')
-vim.cmd('nnoremap <Leader>2 :setlocal tabstop=2 shiftwidth=2<CR>')
-vim.cmd('nnoremap <Leader>4 :setlocal tabstop=4 shiftwidth=4<CR>')
-vim.cmd('nnoremap <Leader>8 :setlocal tabstop=8 shiftwidth=8<CR>')
+vim.cmd('nnoremap <Leader>s2 :setlocal tabstop=2 shiftwidth=2<CR>')
+vim.cmd('nnoremap <Leader>s4 :setlocal tabstop=4 shiftwidth=4<CR>')
+vim.cmd('nnoremap <Leader>s8 :setlocal tabstop=8 shiftwidth=8<CR>')
 
 -- fold mappings --
 vim.cmd('nnoremap <silent> <CR> za')
@@ -100,16 +100,16 @@ vim.cmd('nnoremap <leader>; o<ESC>')
 vim.cmd('nnoremap S i<CR><ESC>')
 vim.cmd('nnoremap gI g;I')
 
--- set list! (toggle)
+-- list toggle
 vim.cmd('nnoremap <leader>lt :set list!<CR>:set list?<CR>')
+-- see plugin help
 vim.cmd('nnoremap <silent> <leader>la :h local-additions<CR>') -- plugin help docs
 -- Highlight text I just pasted, compliments gv well.
 vim.cmd('nnoremap gV `[v`]')
 -- don't move on * search
 vim.cmd('nnoremap * *<C-o>')
 
-vim.cmd('inoremap <silent> <C-o> <C-x><C-o>')
-
+-- emacs
 vim.cmd('cnoremap <C-b> <left>')
 vim.cmd('cnoremap <C-f> <right>')
 vim.cmd('cnoremap <C-a> <C-b>')
@@ -117,6 +117,9 @@ vim.cmd('cnoremap <C-a> <C-b>')
 -- indenting, useful stuff..
 vim.cmd('vnoremap < <gv')
 vim.cmd('vnoremap > >gv')
+
+vim.cmd('nnoremap <silent> <leader>1 :tabp<CR>')
+vim.cmd('nnoremap <silent> <leader>2 :tabn<CR>')
 
 -- *omnicompletion*
 -- Default i_CTRL-o I find useless, so map it to omnicomplete
@@ -191,76 +194,6 @@ vim.cmd([[
         \ http://en.wikipedia.org/wiki/Special:Search?search=<cword><CR>
 ]])
 
--------------------------------------------------------
-------------------------Plugins------------------------
--------------------------------------------------------
-
-require("config.lazy") -- package manager
-require("catppuccin") -- colorscheme
-
--- Telescope --
-local builtin = require('telescope.builtin') -- fuzzy finder
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
--- /Telescope --
-
--- Treesitter --
-require('nvim-treesitter.configs').setup({ -- highlight/indent
-  -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-  ensure_installed = { "c", "make", "lua", "ruby", "rust", "go", "vim", "vimdoc", "sql", "toml", "markdown", "markdown_inline" },
-  highlight = {
-    enable = true,
-
-    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-    -- the name of the parser)
-    -- list of language that will be disabled
-    disable = {},
-    -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
-    disable = function(lang, buf)
-        local max_filesize = 100 * 1024 -- 100 KB
-        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-        if ok and stats and stats.size > max_filesize then
-            return true
-        end
-    end,
-    },
-    indent = {
-      enable = true,
-    },
-})
--- /Treesitter --
-
-require("lualine").setup()
-
--- LSP --
-require("mason").setup()
-require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls" },
-})
-local lspconfig = require("lspconfig")
-lspconfig.lua_ls.setup({})
-vim.api.nvim_create_autocmd('LspAttach', {
-    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-    callback = function(ev)
-      vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-      local opts = { buffer = ev.buf }
-      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-      vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-      vim.keymap.set('n', 'K',  vim.lsp.buf.hover, opts)
-      vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, opts)
-    end,
-})
--- /LSP --
-
--------------------------------------------------------
------------------------/Plugins------------------------
--------------------------------------------------------
-
-
 -- Autocommands --
 vim.cmd([[
   augroup html
@@ -299,9 +232,78 @@ vim.cmd([[
 ]])
 -- /Autocommands --
 
-vim.cmd('colo catppuccin')
+-------------------------------------------------------
+------------------------Plugins------------------------
+-------------------------------------------------------
 
--- Add some vimscript bundles to path
+require("config.lazy") -- package manager
+require("catppuccin") -- colorscheme
+
+-- Telescope --
+local builtin = require('telescope.builtin') -- fuzzy finder
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+-- /Telescope --
+
+-- Treesitter --
+require('nvim-treesitter.configs').setup({ -- highlight/indent
+  -- A list of parser names, or "all" (the listed parsers MUST always be installed)
+  ensure_installed = { "c", "make", "lua", "ruby", "rust", "go", "vim", "vimdoc", "sql", "toml", "markdown", "markdown_inline" },
+  highlight = {
+    enable = true,
+
+    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+    -- the name of the parser)
+    -- list of language that will be disabled
+    -- disable = {},
+    -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
+    disable = function(lang, buf)
+      lang = lang -- disable warning
+      local max_filesize = 100 * 1024 -- 100 KB
+      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+      if ok and stats and stats.size > max_filesize then
+        return true
+      end
+    end,
+    },
+    indent = {
+      enable = true,
+    },
+})
+-- /Treesitter --
+
+require("lualine").setup()
+
+-- LSP --
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = { "lua_ls", "ruby_lsp", "rubocop" },
+})
+local lspconfig = require("lspconfig")
+lspconfig.lua_ls.setup({})
+vim.api.nvim_create_autocmd('LspAttach', {
+    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+    callback = function(ev)
+      vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+      local opts = { buffer = ev.buf }
+      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+      vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+      vim.keymap.set('n', 'K',  vim.lsp.buf.hover, opts)
+      vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, opts)
+    end,
+})
+vim.cmd('colo catppuccin')
+-- /LSP --
+
+-------------------------------------------------------
+-----------------------/Plugins------------------------
+-------------------------------------------------------
+
+-- Add some vimscript pathogen bundles to &rtp and set them up
 vim.cmd([[
 filetype plugin on
 " I only add this directory so all the doc dirs will be in &rtp
@@ -316,6 +318,7 @@ runtime! NERD_tree.vim
 call pathogen#helptags()
 nnoremap <silent> <leader>t :NERDTreeToggle<CR>
 nnoremap <silent> <leader>be :BufExplorer<CR>
+let g:bufExplorerShowTabBuffer=1 " show buffers per tab
 augroup nerdtree
   au!
   au FileType nerdtree syntax on

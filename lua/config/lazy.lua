@@ -19,36 +19,26 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    -- import your plugins
-    --{ import = "plugins" },
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 }, -- colorscheme
     {
-    'nvim-telescope/telescope.nvim', tag = '0.1.8',
+    'nvim-telescope/telescope.nvim', tag = '0.1.8', -- find files
       dependencies = { 'nvim-lua/plenary.nvim' }
     },
     {
-      'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'
+      'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' -- highlighting via AST analysis
     },
     {
-      "nvim-tree/nvim-tree.lua",
-      version = "*",
-      lazy = false,
-      dependencies = {
-        "nvim-tree/nvim-web-devicons",
-      },
-    },
-    {
-      'nvim-lualine/lualine.nvim',
+      'nvim-lualine/lualine.nvim', -- status line
       dependencies = { 'nvim-tree/nvim-web-devicons' },
     },
     {
-      "williamboman/mason.nvim",
+      "williamboman/mason.nvim", -- install LSPs/formatters/debuggers/linters
     },
     {
       "williamboman/mason-lspconfig.nvim",
     },
     {
-      "neovim/nvim-lspconfig",
+      "neovim/nvim-lspconfig", -- official neovim lsp client config
     },
   },
   -- Configure any other settings here. See the documentation for more details.
