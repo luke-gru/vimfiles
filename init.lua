@@ -310,15 +310,17 @@ filetype plugin on
 call pathogen#infect("/home/lukeg/.config/nvim/bundle")
 call pathogen#infect("/home/lukeg/.config/nvim/bundle/buf-explorer")
 call pathogen#infect("/home/lukeg/.config/nvim/bundle/nerdcommenter")
-call pathogen#infect("/home/lukeg/.config/nvim/bundle/nerdtree")
 " Only turn on these plugins
 runtime! bufexplorer.vim
 runtime! NERD_commenter.vim
-runtime! NERD_tree.vim
+runtime! autoload/nerdtree.vim
+runtime! autoload/nerdtree/ui_glue.vim
+runtime! plugin/NERD_tree.vim
 call pathogen#helptags()
 nnoremap <silent> <leader>t :NERDTreeToggle<CR>
 nnoremap <silent> <leader>be :BufExplorer<CR>
 let g:bufExplorerShowTabBuffer=1 " show buffers per tab
+let g:NERDTreeChDirMode = 3
 augroup nerdtree
   au!
   au FileType nerdtree syntax on
