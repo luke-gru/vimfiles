@@ -106,8 +106,6 @@ vim.cmd('nnoremap <leader>lt :set list!<CR>:set list?<CR>')
 vim.cmd('nnoremap <silent> <leader>la :h local-additions<CR>') -- plugin help docs
 -- Highlight text I just pasted, compliments gv well.
 vim.cmd('nnoremap gV `[v`]')
--- don't move on * search
-vim.cmd('nnoremap * *<C-o>')
 
 -- emacs
 vim.cmd('cnoremap <C-b> <left>')
@@ -121,12 +119,28 @@ vim.cmd('vnoremap > >gv')
 vim.cmd('nnoremap <silent> <leader>1 :tabp<CR>')
 vim.cmd('nnoremap <silent> <leader>2 :tabn<CR>')
 
+vim.cmd('nnoremap <silent> <C-w>9 <C-w>100h') -- go to leftmost window
+vim.cmd('nnoremap <silent> <C-w>0 <C-w>100l') -- go to rightmost window
+vim.cmd('nnoremap <silent> <leader>9 <C-w>100h') -- go to leftmost window
+vim.cmd('nnoremap <silent> <leader>0 <C-w>100l') -- go to rightmost window
+vim.cmd('nnoremap <silent> <C-w>. <C-w>>') -- make window wider to right
+vim.cmd('nnoremap <silent> <C-w>, <C-w><') -- make window wider to left
+vim.cmd('nnoremap <silent> <leader>. 5<C-w>>') -- make window 5 wider to right
+vim.cmd('nnoremap <silent> <leader>, 5<C-w><') -- make window 5 wider to left
+
 -- *omnicompletion*
 -- Default i_CTRL-o I find useless, so map it to omnicomplete
 vim.cmd('inoremap <silent> <C-o> <C-x><C-o>')
 
 -- Preview markdown in browser (linux).
 vim.cmd('nnoremap <leader>pm :w!<CR>:!markdown % > %.html && sensible-browser file://%:p.html<CR><CR>')
+
+-- terminal mappings
+vim.cmd([[
+    " return to normal mode
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap <C-c> <C-\><C-n>
+]])
 
 -- Functions
 vim.cmd([[
@@ -217,7 +231,7 @@ vim.cmd([[
 
   augroup ft_ruby
     au!
-    au BufRead,BufNewFile Gemfile*,*.ru,Vagrantfile set ft=ruby
+    au BufRead,BufNewFile Gemfile,*.ru,Vagrantfile set ft=ruby
     au FileType ruby,eruby,rails setl keywordprg=ri iskeyword+=?
   augroup END
 
@@ -280,10 +294,12 @@ require("lualine").setup()
 -- LSP --
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls", "ruby_lsp", "rubocop" },
+  ensure_installed = { "lua_ls", "ruby_lsp", "clangd", "rubocop" },
 })
 local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup({})
+lspconfig.ruby_lsp.setup({})
+lspconfig.clangd.setup({})
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
     callback = function(ev)
@@ -296,8 +312,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, opts)
     end,
 })
-vim.cmd('colo catppuccin')
+vim.cmd([[
+nnoremap <leader>ls :LspStart<CR>
+nnoremap <leader>lx :LspStop<CR>
+nnoremap <leader>lr :LspRestart<CR>
+nnoremap <leader>li :LspInfo<CR>
+nnoremap <leader>ll :LspLog<CR>
+]])
 -- /LSP --
+vim.cmd('colo catppuccin')
 
 -------------------------------------------------------
 -----------------------/Plugins------------------------
@@ -306,21 +329,28 @@ vim.cmd('colo catppuccin')
 -- Add some vimscript pathogen bundles to &rtp and set them up
 vim.cmd([[
 filetype plugin on
+filetype indent on
 " I only add this directory so all the doc dirs will be in &rtp
 call pathogen#infect("/home/lukeg/.config/nvim/bundle")
 call pathogen#infect("/home/lukeg/.config/nvim/bundle/buf-explorer")
 call pathogen#infect("/home/lukeg/.config/nvim/bundle/nerdcommenter")
+call pathogen#infect("/home/lukeg/.config/nvim/bundle/vim-chroma")
 " Only turn on these plugins
 runtime! bufexplorer.vim
 runtime! NERD_commenter.vim
+let g:NERDTreeMapCWD = 'cD' " must be before load of nerdtree
 runtime! autoload/nerdtree.vim
 runtime! autoload/nerdtree/ui_glue.vim
 runtime! plugin/NERD_tree.vim
+runtime! vim-chroma.vim
 call pathogen#helptags()
 nnoremap <silent> <leader>t :NERDTreeToggle<CR>
 nnoremap <silent> <leader>be :BufExplorer<CR>
-let g:bufExplorerShowTabBuffer=1 " show buffers per tab
+nnoremap <silent> <leader>h :call g:ChromaHighlight()<CR>
+let g:bufExplorerShowTabBuffer=1 " show buffers per tab by default
 let g:NERDTreeChDirMode = 3
+let g:NERDTreeUseTCD = 1 " use :tcd instead of :cd when using C in nerdtree
+let g:NERDTreeMinimalUI=1 " don't show 'Press ? For help' line
 augroup nerdtree
   au!
   au FileType nerdtree syntax on
