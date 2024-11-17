@@ -14,7 +14,7 @@ vim.cmd("let maplocalleader='\'")
 vim.cmd('set report=0 " Always report when changing lines.')
 vim.cmd('set more " Pause listings when whole screen is filled.')
 vim.cmd('set modelines=5 " Just to make sure.')
-vim.cmd('set pastetoggle=<F2>')
+--vim.cmd('set pastetoggle=<F2>')
 vim.cmd('set winaltkeys=no " Allow use of <alt> for mappings by disabling window alt.')
 --vim.cmd('set tags=tags;,tags')
 vim.cmd('set textwidth=0 " Overridden local to buffer for certain filetypes,')
@@ -331,10 +331,10 @@ vim.cmd([[
 filetype plugin on
 filetype indent on
 " I only add this directory so all the doc dirs will be in &rtp
-call pathogen#infect("/home/lukeg/.config/nvim/bundle")
-call pathogen#infect("/home/lukeg/.config/nvim/bundle/buf-explorer")
-call pathogen#infect("/home/lukeg/.config/nvim/bundle/nerdcommenter")
-call pathogen#infect("/home/lukeg/.config/nvim/bundle/vim-chroma")
+call pathogen#infect("$HOME/.config/nvim/bundle")
+call pathogen#infect("$HOME/.config/nvim/bundle/buf-explorer")
+call pathogen#infect("$HOME/.config/nvim/bundle/nerdcommenter")
+call pathogen#infect("$HOME/.config/nvim/bundle/vim-chroma")
 " Only turn on these plugins
 runtime! bufexplorer.vim
 runtime! NERD_commenter.vim
