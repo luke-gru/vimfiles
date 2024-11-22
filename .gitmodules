@@ -13,9 +13,6 @@
 [submodule "bundle/pathogen"]
 	path = bundle/pathogen
 	url = git@github.com:tpope/vim-pathogen.git
-[submodule "bundle/vim-smartinput"]
-	path = bundle/vim-smartinput
-	url = git@github.com:kana/vim-smartinput.git
 [submodule "bundle/vim-chroma"]
 	path = bundle/vim-chroma
 	url = git@github.com:luke-gru/vim-chroma.git
