@@ -36,7 +36,7 @@ vim.cmd('set wildmenu      " Give me menu for tab completion.')
 vim.cmd('set wildmode=full " All I need (and default).')
 vim.cmd('set wildcharm=<C-z> " Let me tab a cmdline mapping.')
 vim.cmd('set wildignore+=*~')
-vim.cmd('set wildignore+=*.DS_Store?,*.0,*.obj,*.exe,*.dll,*.manifest')
+vim.cmd('set wildignore+=*.DS_Store?,*.o,*.obj,*.exe,*.dll,*.manifest')
 vim.cmd('set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg')
 vim.cmd('set suffixes+=.git,.hg,.svn,tags " Lower priority for wildmenu.')
 vim.cmd('set noerrorbells  " No annoying little vi error noises!')
@@ -63,7 +63,7 @@ vim.cmd('set bs=2       " Backspace over everything in insert mode')
 vim.cmd('set cmdheight=2 " Cmd line height.')
 vim.cmd('set path+=.,,./**')
 vim.cmd('set laststatus=2  " All windows have status lines')
-vim.cmd('set shortmess=at  " To avoid the \'Hit ENTER to continue\' promp')
+vim.cmd('set shortmess=at  " To avoid the \'Hit ENTER to continue\' prompt')
 vim.cmd('set splitright    " Verti. splits open on the right')
 vim.cmd('set splitbelow    " Horiz. splits open below current window')
 vim.cmd('set undofile')
@@ -119,8 +119,8 @@ vim.cmd('vnoremap > >gv')
 vim.cmd('nnoremap <silent> <leader>1 :tabp<CR>')
 vim.cmd('nnoremap <silent> <leader>2 :tabn<CR>')
 
-vim.cmd('nnoremap <silent> <C-w>9 <C-w>100h') -- go to leftmost window
-vim.cmd('nnoremap <silent> <C-w>0 <C-w>100l') -- go to rightmost window
+vim.cmd('nnoremap <silent> <C-w>9 <C-w>100h') -- go to leftmost window (like <ctrl-w t>)
+vim.cmd('nnoremap <silent> <C-w>0 <C-w>100l') -- go to rightmost window (like <ctrl-w b>)
 vim.cmd('nnoremap <silent> <leader>9 <C-w>100h') -- go to leftmost window
 vim.cmd('nnoremap <silent> <leader>0 <C-w>100l') -- go to rightmost window
 vim.cmd('nnoremap <silent> <C-w>. <C-w>>') -- make window wider to right
@@ -354,6 +354,6 @@ let g:NERDTreeMinimalUI=1 " don't show 'Press ? For help' line
 augroup nerdtree
   au!
   au FileType nerdtree syntax on
-  au FileType nerdtree source /home/lukeg/.config/nvim/bundle/nerdtree/syntax/nerdtree.vim
+  au FileType nerdtree source $HOME/.config/nvim/bundle/nerdtree/syntax/nerdtree.vim
 augroup END
 ]])
