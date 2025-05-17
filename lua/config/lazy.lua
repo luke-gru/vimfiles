@@ -21,7 +21,7 @@ require("lazy").setup({
   spec = {
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 }, -- colorscheme
     {
-    'nvim-telescope/telescope.nvim', tag = '0.1.8', -- find files
+    'nvim-telescope/telescope.nvim', -- find files
       dependencies = { 'nvim-lua/plenary.nvim' }
     },
     {
@@ -40,6 +40,9 @@ require("lazy").setup({
     {
       "neovim/nvim-lspconfig", -- official neovim lsp client config
     },
+    {
+      "github/copilot.vim",
+    }
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.

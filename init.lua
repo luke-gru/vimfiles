@@ -85,14 +85,26 @@ vim.cmd('nnoremap <Leader>s4 :setlocal tabstop=4 shiftwidth=4<CR>')
 vim.cmd('nnoremap <Leader>s8 :setlocal tabstop=8 shiftwidth=8<CR>')
 
 -- fold mappings --
-vim.cmd('nnoremap <silent> <CR> za')
+vim.cmd('nnoremap <expr> <CR> &buftype ==# "quickfix" ? "\\<CR>" : "za"')
 -- fold start (closed, open)
 vim.cmd('nnoremap <silent> <leader>fc :set foldlevel=0<CR>')
 vim.cmd('nnoremap <silent> <leader>fo :set foldlevel=99<CR>')
 -- /fold mappings --
 
-vim.cmd('noremap <silent> <F3> <ESC>:e $MYVIMRC<CR>')
-vim.cmd('noremap <silent> <F4> <ESC>:so $MYVIMRC<CR>')
+vim.cmd('noremap <silent> <leader>3 <ESC>:e $MYVIMRC<CR>')
+vim.cmd('noremap <silent> <leader>4 <ESC>:so $MYVIMRC<CR>')
+
+-- quickfix mappings
+vim.cmd [[
+  nnoremap <expr> <leader>qo &buftype ==# "quickfix" ? ":cclose<CR>" : ":copen<CR>"
+  nnoremap <silent> <leader>qn :cnext<CR>
+  nnoremap <silent> <leader>qp :cprev<CR>
+  nnoremap <silent> <leader>qc :cclose<CR>
+  nnoremap <silent> <leader>qa :cabove<CR>
+  nnoremap <silent> <leader>qb :cbelow<CR>
+  nnoremap <silent> <leader>qf :cfirst<CR>
+  nnoremap <silent> <leader>ql :clist<CR>
+]]
 
 -- making [count] newlines below cursor
 vim.cmd('nnoremap <leader>; o<ESC>')
@@ -108,17 +120,19 @@ vim.cmd('nnoremap <silent> <leader>la :h local-additions<CR>') -- plugin help do
 vim.cmd('nnoremap gV `[v`]')
 
 -- emacs
+-- NOTE: if using vim in terminal inside tmux, <c-b> mappings don't work properly
 vim.cmd('cnoremap <C-b> <left>')
 vim.cmd('cnoremap <C-f> <right>')
 vim.cmd('cnoremap <C-a> <C-b>')
-
+vim.cmd('inoremap <C-b> <left>')
+vim.cmd('inoremap <C-f> <right>')
+vim.cmd('inoremap <silent> <C-a> <ESC>^i')
+vim.cmd('inoremap <silent> <C-e> <ESC>$a')
 -- indenting, useful stuff..
 vim.cmd('vnoremap < <gv')
 vim.cmd('vnoremap > >gv')
 
-vim.cmd('nnoremap <silent> <leader>1 :tabp<CR>')
-vim.cmd('nnoremap <silent> <leader>2 :tabn<CR>')
-
+-- windows
 vim.cmd('nnoremap <silent> <C-w>9 <C-w>100h') -- go to leftmost window (like <ctrl-w t>)
 vim.cmd('nnoremap <silent> <C-w>0 <C-w>100l') -- go to rightmost window (like <ctrl-w b>)
 vim.cmd('nnoremap <silent> <leader>9 <C-w>100h') -- go to leftmost window
@@ -127,6 +141,16 @@ vim.cmd('nnoremap <silent> <C-w>. <C-w>>') -- make window wider to right
 vim.cmd('nnoremap <silent> <C-w>, <C-w><') -- make window wider to left
 vim.cmd('nnoremap <silent> <leader>. 5<C-w>>') -- make window 5 wider to right
 vim.cmd('nnoremap <silent> <leader>, 5<C-w><') -- make window 5 wider to left
+
+-- scroll
+vim.cmd('nnoremap <silent> <right> zl')
+vim.cmd('nnoremap <silent> <left> zh')
+
+-- tabs
+vim.cmd('nnoremap <silent> <leader><right> :tabp<enter>')
+vim.cmd('nnoremap <silent> <leader><left> :tabn<enter>')
+vim.cmd('nnoremap <silent> <leader>1 :tabp<CR>')
+vim.cmd('nnoremap <silent> <leader>2 :tabn<CR>')
 
 -- *omnicompletion*
 -- Default i_CTRL-o I find useless, so map it to omnicomplete
@@ -140,6 +164,12 @@ vim.cmd([[
     " return to normal mode
     tnoremap <Esc> <C-\><C-n>
     tnoremap <C-c> <C-\><C-n>
+]])
+
+vim.cmd([[
+  " nvim syntax inspection command
+  nnoremap <leader>` :Inspect<enter>
+  nnoremap <leader>  :set ft=log<enter>:source ~/.vim/syntax/ruby_debug_log.vim<enter>:set ft=ruby_debug_log<enter>
 ]])
 
 -- Functions
@@ -168,10 +198,8 @@ vim.cmd([[
     endif
   endfunction
 
-  " Reimplement CTRL-Y and CTRL-E in insert mode...
+  " Reimplement CTRL-Y in insert mode...
   inoremap <silent>  <C-Y>  <C-R><C-R>=LookUpOrDown("up")<CR>
-  inoremap <silent>  <C-E>  <C-R><C-R>=LookUpOrDown("down")<CR>
-
 
   function! Preserve(command)
     " Preparation: save last search, and cursor position.
@@ -192,6 +220,8 @@ vim.cmd([[
   function! OpenURL(url)
     if has("win32")
       exe "!start cmd /cstart /b ".a:url.""
+    elseif has("mac")
+      exe "silent !open \"".a:url."\""
     elseif $DISPLAY !~ '^\w'
       exe "silent !sensible-browser \"".a:url."\""
     else
@@ -244,6 +274,11 @@ vim.cmd([[
           \ endif
   augroup END
 ]])
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = { "*" },
+})
 -- /Autocommands --
 
 -------------------------------------------------------
@@ -254,11 +289,55 @@ require("config.lazy") -- package manager
 require("catppuccin") -- colorscheme
 
 -- Telescope --
+function vim.getVisualSelection()
+	local current_clipboard_content = vim.fn.getreg('"')
+
+	vim.cmd('noau normal! "vy"')
+	local text = vim.fn.getreg('v')
+	vim.fn.setreg('v', {})
+
+	vim.fn.setreg('"', current_clipboard_content)
+
+	text = string.gsub(text, "\n", "")
+	if #text > 0 then
+		return text
+	else
+		return ''
+	end
+end
+
 local builtin = require('telescope.builtin') -- fuzzy finder
+local keymap = vim.keymap.set
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+vim.keymap.set('n', '<leader>fp', builtin.resume, {})
+vim.keymap.set('n', '<leader>fr', builtin.registers, {})
+vim.keymap.set('n', '<leader>fl', builtin.lsp_references, {})
+
+keymap('v', '<leader>fg', function()
+	local text = vim.getVisualSelection()
+	builtin.live_grep({ default_text = text, noremap = true, silent = true })
+end, opts)
+keymap('v', '<leader>ff', function()
+	local text = vim.getVisualSelection()
+	builtin.find_files({ default_text = text, noremap = true, silent = true })
+end, opts)
+
+require('telescope').setup {
+  defaults = {
+    mappings = {
+      i = {
+        -- picker history: this is global history, not history per picker unfortunately
+        -- see https://github.com/nvim-telescope/telescope.nvim/pull/521#issue-804890054
+        ["<C-j>"] = require('telescope.actions').cycle_history_next,
+        ["<C-k>"] = require('telescope.actions').cycle_history_prev,
+      },
+    },
+  }
+}
+
 -- /Telescope --
 
 -- Treesitter --
@@ -273,7 +352,7 @@ require('nvim-treesitter.configs').setup({ -- highlight/indent
     -- the name of the parser)
     -- list of language that will be disabled
     -- disable = {},
-    -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
+    -- Or use disable slow treesitter highlight for large files
     disable = function(lang, buf)
       lang = lang -- disable warning
       local max_filesize = 100 * 1024 -- 100 KB
@@ -294,7 +373,7 @@ require("lualine").setup()
 -- LSP --
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls", "ruby_lsp", "clangd", "rubocop" },
+  ensure_installed = {"ruby_lsp", "lua_ls", "clangd"},
 })
 local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup({})
@@ -322,14 +401,69 @@ nnoremap <leader>ll :LspLog<CR>
 -- /LSP --
 vim.cmd('colo catppuccin')
 
+-- Copilot
+-- Copilot is currently not working properly on nvim < 0.11
+vim.cmd(':Copilot disable')
+
 -------------------------------------------------------
 -----------------------/Plugins------------------------
 -------------------------------------------------------
 
 -- Add some vimscript pathogen bundles to &rtp and set them up
 vim.cmd([[
+const s:MAXCOUNT = 100000
+const s:TIMEOUT = 5000
+
+augroup index_after_slash | au!
+    au CmdlineLeave /,\? call s:index_after_slash()
+augroup END
+
+fu s:index_after_slash() abort
+    if getcmdline() is# '' || state() =~# 'm'
+        return
+    endif
+    call timer_start(0, {-> mode() =~# '[nv]' ? s:search_index() : 0})
+endfu
+
+fu s:search_index() abort
+    try
+        let result = searchcount(#{maxcount: s:MAXCOUNT, timeout: s:TIMEOUT})
+        let [current, total, incomplete] = [result.current, result.total, result.incomplete]
+    catch
+        echohl ErrorMsg | echom v:exception | echohl NONE
+        return ''
+    endtry
+    let msg = ''
+    let pat = substitute(@/, '\%x00', '^@', 'g')
+    if incomplete == 0
+        let msg = printf('[%*d/%d] %s', len(total), current, total, pat)
+    elseif incomplete == 1 " recomputing took too much time
+        let msg = printf('[?/??] '..%s', pat)
+    elseif incomplete == 2 " too many matches
+        if result.total == (result.maxcount+1) && result.current <= result.maxcount
+            let msg = printf('[%*d/>%d] %s', len(total-1), current, total-1, pat)
+        else
+            let msg = printf('[>%*d/>%d] %s', len(total-1), current-1, total-1, pat)
+        endif
+    endif
+    if strchars(msg, 1) > (v:echospace + (&cmdheight-1)*&columns)
+        let n = v:echospace - 3
+        let [n1, n2] = n%2 ? [n/2, n/2] : [n/2-1, n/2]
+        let msg = matchlist(msg, '\(.\{' .. n1 .. '}\).*\(.\{' .. n2 .. '}\)')[1:2]->join('...')
+    endif
+    echo msg
+    return ''
+endfu
+
+nmap n <plug>(n)<plug>(search_index)
+nmap N <plug>(N)<plug>(search_index)
+nno <plug>(n) n
+nno <plug>(N) N
+nno <expr> <plug>(search_index) <sid>search_index()
+
+
 filetype plugin on
-filetype indent on
+"filetype indent on " treesitter is the indentation plugin, not indent.vim
 " I only add this directory so all the doc dirs will be in &rtp
 call pathogen#infect("$HOME/.config/nvim/bundle")
 call pathogen#infect("$HOME/.config/nvim/bundle/buf-explorer")
@@ -353,7 +487,7 @@ let g:NERDTreeUseTCD = 1 " use :tcd instead of :cd when using C in nerdtree
 let g:NERDTreeMinimalUI=1 " don't show 'Press ? For help' line
 augroup nerdtree
   au!
-  au FileType nerdtree syntax on
-  au FileType nerdtree source $HOME/.config/nvim/bundle/nerdtree/syntax/nerdtree.vim
+  "au FileType nerdtree syntax on
+  "au FileType nerdtree source $HOME/.config/nvim/bundle/nerdtree/syntax/nerdtree.vim
 augroup END
 ]])
